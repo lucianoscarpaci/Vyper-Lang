@@ -14,3 +14,8 @@ struct Pokemon:
 
 
 pokemonList: HashMap[uint256, Pokemon]
+
+
+@external
+def createPokemon(name: String[32], dna: uint256, HP: uint256):
+    pass
