@@ -20,13 +20,16 @@ pokemonList: HashMap[uint256, Pokemon]
 
 # An external function that creates a pokemon and adds it to the pokemonList
 @internal
-def _createPokemon(_name: String[32], _dna: uint256, _HP: uint256, randomDNA: uint256):
-    self.pokemonList[self.totalPokemonCount] = Pokemon(
-        {_name: name, _matches: 0, _wins: 0}
+def _createPokemon(_name: string[32]) -> Pokemon:
+    newPokemon: Pokemon = Pokemon(
+        {name: _name, dna: randomDNA, HP: randomHP, matches: 0, wins: 0}
     )
     self.totalPokemonCount += 1
     # call the function _generateRandomDNA using the self environment variable and pass the _name variable as an argument
     randomDNA: uint256 = self._generateRandomDNA(_name)
+    # create a uint256 variable randomHP = randomDNA % HPP_LIMIT
+    randomHP: uint256 = randomDNA % HPP_LIMIT
+    return newPokemon
 
 
 @pure
