@@ -13,9 +13,19 @@ struct Pokemon:
         wins: uint256
 
 
+totalPokemonCount: public(uint256)
 pokemonList: HashMap[uint256, Pokemon]
 
+# An external function that creates a pokemon and adds it to the pokemonList
+@internal
+def _createPokemon(_name: String[32], _dna: uint256, _HP: uint256):
+    self.pokemonList[self.totalPokemonCount] = Pokemon(
+        {_name: name, _dna: dna, _HP: HP, _matches: 0, _wins: 0}
+    )
+    self.totalPokemonCount += 1
 
-@external
-def createPokemon(name: String[32], dna: uint256, HP: uint256):
+
+@pure
+@internal
+def _generateRandomDNA(_name: String[32]) -> uint256:
     pass
